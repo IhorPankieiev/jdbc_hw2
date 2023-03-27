@@ -5,19 +5,19 @@ CREATE DATABASE carshop;
 USE carshop;
 
 
-CREATE TABLE makes
+CREATE TABLE marks
 (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	make VARCHAR(20) UNIQUE
+	mark VARCHAR(20) UNIQUE
 );
 
 CREATE TABLE cars
 (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	make_id INT NOT NULL,
+	mark_id INT NOT NULL,
 	model VARCHAR(20) NOT NULL,
 	price INT NOT NULL,
-	FOREIGN KEY(make_id) REFERENCES makes(id)
+	FOREIGN KEY(mark_id) REFERENCES marks(id)
 );
 
 CREATE TABLE clients
@@ -38,12 +38,12 @@ CREATE TABLE orders
 	FOREIGN KEY(client_id) REFERENCES clients(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO makes(make) VALUES('Audi');
-INSERT INTO makes(make) VALUES('Porsche');
+INSERT INTO marks(mark) VALUES('Audi');
+INSERT INTO marks(mark) VALUES('Porsche');
 
-INSERT INTO cars(make_id, model, price) VALUES (1, 'A5', 50000);
-INSERT INTO cars(make_id, model, price) VALUES (2, 'Panamera', 100000);
-INSERT INTO cars(make_id, model, price) VALUES (2, 'Cayman', 88000);
+INSERT INTO cars(mark_id, model, price) VALUES (1, 'A5', 50000);
+INSERT INTO cars(mark_id, model, price) VALUES (2, 'Panamera', 100000);
+INSERT INTO cars(mark_id, model, price) VALUES (2, 'Cayman', 88000);
 
 INSERT INTO clients(name, age, phone)
 VALUES
@@ -55,7 +55,7 @@ INSERT INTO orders(car_id, client_id) VALUES(1, 1), (2, 2), (1, 3);
 
 -- ************************************************
 
-select * from makes;
+select * from marks;
 select * from cars;
 select * from clients;
 select * from orders;
